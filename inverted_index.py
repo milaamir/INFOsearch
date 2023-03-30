@@ -4,7 +4,7 @@ import nltk
 import pymorphy2
 
 from nltk.stem import WordNetLemmatizer
-from bs4 import BeautifulSoup
+
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 from pymystem3 import Mystem
@@ -38,10 +38,10 @@ def remove_stop_words(tokens):
               and token != '']
 
     return tokens
-
-def intersection(lst1, lst2):
-    lst3 = [value for value in lst1 if value in lst2]
-    return lst3
+#
+# def intersection(lst1, lst2):
+#     lst3 = [value for value in lst1 if value in lst2]
+#     return lst3
 
 if __name__ == '__main__':
     def update_inverted_index(index_map, array, value):
@@ -70,7 +70,7 @@ if __name__ == '__main__':
             update_inverted_index(inverted_index, cleaned_tokens, value)
 
         # writing inverted index
-        with open('inverted_index.txt', mode='w', encoding='utf-8') as file:
+        with open('inverted_lem_index.txt', mode='w', encoding='utf-8') as file:
             for key, values in inverted_index.items():
                 print(filename)
                 file.write(f'{key} {" ".join(values)}\n')

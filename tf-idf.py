@@ -9,7 +9,7 @@ def count_tf(freq, count):
 
 def count_idf(frequancy):
     if frequancy != 0:
-        idf = math.log(100 / frequancy)
+        idf = math.log(100 / 1 + frequancy)
         return idf
     else:
         return 0
@@ -106,6 +106,57 @@ def termin():
         output_file.close()
 
 
+# def termin():
+#     tf_token = {}
+#     with open('tokens.txt', encoding='utf-8') as file:
+#         token_count = len(file.readlines())
+#
+#         for i in range(0, 100):
+#             with open(f"output/{i}.html", "r", encoding='utf-8') as f:
+#                 file_contents = f.read().lower()
+#                 for line in file:
+#                     str = line.strip()
+#                     if str in file_contents:
+#                         if str not in tf_token:
+#                             tf_token[str] = [0] * 100
+#                         tf_token[str][i] += 1
+#
+#     for key in tf_token:
+#         for i in range(100):
+#             tf_token[key][i] = count_tf(tf_token[key][i], token_count)
+#
+#     idf_token = {}
+#     with open('tokens.txt', "r", encoding='utf-8') as text:
+#         for line in text:
+#             str = line.strip()
+#             for i in range(0, 100):
+#                 file = f"output/{i}.html"
+#                 with open(file, "r", encoding='utf-8') as f:
+#                     file_contents = f.read().lower()
+#                     if str in file_contents:
+#                         if str in idf_token:
+#                             idf_token[str] += 1
+#                         else:
+#                             idf_token[str] = 0
+#                         break
+#     for key in idf_token:
+#         idf_token[key] = count_idf(idf_token[key])
+#
+#     for i in range(0, 100):
+#         with open(f"tokens/{i}.txt", 'w', encoding="utf-8") as output_file:
+#             file = f"output/{i}.html"
+#             with open(file, "r", encoding='utf-8') as f:
+#                 file_contents = f.read().lower()
+#                 with open('tokens.txt', "r", encoding='utf-8') as text:
+#                     for line in text:
+#                         str = line.strip()
+#                         if str in tf_token:
+#                             kf_idf = tf_token[str][i] * idf_token[str]
+#                             print(kf_idf)
+#                             output_file.write(f'{str} {tf_token[str][i]} {idf_token[str]} {kf_idf}\n')
+#         output_file.close()
+
+
 if __name__ == '__main__':
-    # lemmas()
-    termin()
+    lemmas()
+    # termin()
